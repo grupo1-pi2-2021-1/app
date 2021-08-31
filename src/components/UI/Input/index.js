@@ -34,11 +34,11 @@ const Input = ({
   const [validationError, setValidationError] = useState('');
   const [blurredOnce, setBlurredOnce] = useState(false);
 
-  const validateInput = (inputValue) => {
+  const validateInput = inputValue => {
     let errorText = '';
 
     if (rules.length) {
-      rules.forEach((rule) => {
+      rules.forEach(rule => {
         const currentRule = rule(inputValue, errorMessage);
         if (!currentRule.isValid && errorText === '') {
           errorText = currentRule.errorText;
@@ -48,7 +48,7 @@ const Input = ({
     return errorText;
   };
 
-  const inputChanged = (inputValue) => {
+  const inputChanged = inputValue => {
     const error = validateInput(inputValue);
     if (blurredOnce) {
       setValidationError(error);
@@ -146,7 +146,7 @@ Input.defaultProps = {
   maxLength: 50,
   minLength: 0,
   rightAccessory: () => {},
-  inputMask: (text) => text,
+  inputMask: text => text,
   baseColor: theme.colors.grey,
   tintColor: theme.colors.grey,
   textColor: theme.colors.black,

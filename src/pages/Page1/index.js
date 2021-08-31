@@ -51,14 +51,14 @@ const Page1 = ({navigation}) => {
         </Text>
         <Input
           label="Seu nome"
-          onChange={(value) => setName(value)}
+          onChange={value => setName(value)}
           value={name.value}
           autoCapitalize="words"
           rules={[required]}
         />
         <Input
           label="Número de telefone"
-          onChange={(value) => setPhone(value)}
+          onChange={value => setPhone(value)}
           value={phone.value}
           inputMask={phoneMask}
           keyboardType="numeric"

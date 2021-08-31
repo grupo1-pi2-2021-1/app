@@ -1,1 +1,1 @@
-export default (state) => state.auth;
+export default state => state.auth;

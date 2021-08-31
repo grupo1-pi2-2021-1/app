@@ -6,7 +6,7 @@ const instance = axios.create({
   baseURL: Config.API2,
 });
 
-instance.interceptors.request.use(async (config) => ({
+instance.interceptors.request.use(async config => ({
   ...config,
   headers: {
     ...config.headers,

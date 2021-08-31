@@ -1,6 +1,6 @@
 import * as actionTypes from './actionTypes';
 
-export const login = (loginObject) => {
+export const login = loginObject => {
   return {
     type: actionTypes.LOGIN,
     loginObject,

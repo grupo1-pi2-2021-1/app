@@ -7,7 +7,7 @@ import lodashIsEmpty from 'lodash/isEmpty';
  * @property {Boolean} isValid `true` if value is a valid value
  * @property {String} errorText message of an invalid rule
  * */
-const phone = (value) => {
+const phone = value => {
   const errorObject = {
     isValid: false,
     errorText: 'Telefone em formato inválido',

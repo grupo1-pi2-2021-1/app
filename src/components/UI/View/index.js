@@ -11,8 +11,8 @@ import {
 } from 'styled-system';
 
 export default styled.View`
-elevation: ${(props) => props.elevation || '0px'}
-flex-direction: ${(props) => (props.row ? 'row' : 'column')};
+elevation: ${props => props.elevation || '0px'}
+flex-direction: ${props => (props.row ? 'row' : 'column')};
 ${color}
 ${space};
 ${layout};

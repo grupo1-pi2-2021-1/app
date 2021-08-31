@@ -22,6 +22,7 @@ module.exports = {
   },
   globals: {
     __DEV__: true,
+    it: true,
+    expect: true,
   },
 };
-
