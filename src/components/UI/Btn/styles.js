@@ -6,7 +6,7 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 export const ButtonStyle = styled(Touchable)`
   background: ${props =>
     props.showDisabled ? theme.colors.grey : props.background};
-  border-radius: 7px;
+  border-radius: 50px;
   width: 100%;
   height: ${props => props.height}px;
   flex-direction: row;
