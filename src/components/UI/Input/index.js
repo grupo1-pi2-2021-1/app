@@ -2,7 +2,7 @@ import React, {useRef, useState, useEffect} from 'react';
 import {PixelRatio} from 'react-native';
 import PropTypes from 'prop-types';
 import theme from 'theme/theme';
-import {TextField} from 'rn-material-ui-textfield';
+import {OutlinedTextField} from 'rn-material-ui-textfield';
 
 const Input = ({
   label,
@@ -78,7 +78,7 @@ const Input = ({
   }, [blurredOnce, value]);
 
   return (
-    <TextField
+    <OutlinedTextField
       label={label}
       keyboardType={hide ? 'default' : keyboardType}
       returnKeyType={returnKeyType}
@@ -147,8 +147,8 @@ Input.defaultProps = {
   minLength: 0,
   rightAccessory: () => {},
   inputMask: text => text,
-  baseColor: theme.colors.grey,
-  tintColor: theme.colors.grey,
+  baseColor: theme.colors.darkGrey,
+  tintColor: theme.colors.darkGrey,
   textColor: theme.colors.black,
   errorColor: theme.colors.red,
   focus: false,
