@@ -52,7 +52,8 @@ const SelectAmbulanceTemplate = ({onInitialPages, onPress}) => {
               textAlign="center"
               fontWeight="bold"
               fontSize={theme.font.sizes.L}
-              mb={4}>
+              mb={4}
+              mx={2}>
               {title}
             </Text>
           )}

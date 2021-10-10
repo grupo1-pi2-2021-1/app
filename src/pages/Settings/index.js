@@ -1,12 +1,8 @@
 import React from 'react';
-import {View, Text} from 'components/UI';
+import SelectAmbulanceTemplate from 'components/SelectAmbulanceTemplate';
 
-const Page2 = () => {
-  return (
-    <View flex={1} alignItems="center" justifyContent="center">
-      <Text>Page 2</Text>
-    </View>
-  );
+const SelectAmbulance = () => {
+  return <SelectAmbulanceTemplate />;
 };
 
-export default Page2;
+export default SelectAmbulance;
