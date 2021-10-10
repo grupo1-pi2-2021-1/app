@@ -12,6 +12,7 @@ target 'app' do
   pod 'Permission-LocationWhenInUse', :path => "#{permissions_path}/LocationWhenInUse"
   pod 'Permission-LocationAlways', :path => "#{permissions_path}/LocationAlways"
   pod 'Permission-LocationAccuracy', :path => "#{permissions_path}/LocationAccuracy"
+  pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
 
   use_react_native!(
     :path => config[:reactNativePath],
