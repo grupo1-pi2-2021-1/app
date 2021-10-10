@@ -7,43 +7,37 @@ const Item = ({item, onPress}) => {
   return (
     <>
       <Touchable onPress={onPress}>
-        <View p={2}>
-          <Text fontWeight="bold" fontSize={theme.font.sizes.M} mb={2}>
-            {item.date}
+        <View my={2} p={4} bg={theme.colors.backgroundBlack} borderRadius={12}>
+          <Text
+            color={theme.colors.primary}
+            fontSize={theme.font.sizes.S}
+            mb={2}>
+            {item.type}
           </Text>
-          <View row alignItems="center" justifyContent="center">
+          <Text
+            color={theme.colors.white}
+            fontSize={theme.font.sizes.ML}
+            fontWeight="bold"
+            mb={2}>
+            {item.name}
+          </Text>
+          <Text color={theme.colors.white} fontSize={theme.font.sizes.M} mb={4}>
+            {item.description}
+          </Text>
+          <View row alignItems="center" justifyContent="space-between">
             <Text
+              color={theme.colors.white}
               fontSize={theme.font.sizes.SM}
-              color={theme.colors.darkGrey}
-              flex={0.4}>
-              RESPONSÁVEL
-            </Text>
-            <Text
-              fontSize={theme.font.sizes.SM}
-              color={theme.colors.darkGrey}
-              flex={0.4}>
-              PROCEDIMENTO
-            </Text>
-            <Text
-              fontSize={theme.font.sizes.SM}
-              color={theme.colors.darkGrey}
+              fontWeight="bold"
               flex={0.2}>
-              HORA
-            </Text>
-          </View>
-          <View alignSelf="stretch" height={1} bg={theme.colors.grey} my={1} />
-          <View row alignItems="center" justifyContent="center">
-            <Text fontSize={theme.font.sizes.SM} fontWeight="bold" flex={0.4}>
-              {item.userName}
-            </Text>
-            <Text fontSize={theme.font.sizes.SM} fontWeight="bold" flex={0.4}>
-              {item.procedureName}
-            </Text>
-            <Text fontSize={theme.font.sizes.SM} fontWeight="bold" flex={0.2}>
               {item.time}
             </Text>
+            <View bg={theme.colors.primary} py={1} px={2} borderRadius={30}>
+              <Text color={theme.colors.white} fontSize={theme.font.sizes.S}>
+                Ver mais
+              </Text>
+            </View>
           </View>
-          <View alignSelf="stretch" height={1} bg={theme.colors.grey} my={1} />
         </View>
       </Touchable>
     </>

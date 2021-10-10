@@ -12,10 +12,12 @@ const SelectAmbulanceTemplate = ({onPressItem, Item, data, ...props}) => {
     <Container>
       <View>
         <FlatList
+          showsVerticalScrollIndicator={false}
           {...props}
           data={data}
           renderItem={renderItem}
           keyExtractor={item => item.id}
+          contentContainerStyle={{paddingTop: 20}}
         />
       </View>
     </Container>

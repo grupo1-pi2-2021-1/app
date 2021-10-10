@@ -18,5 +18,6 @@ export default {
     darkGrey: '#8C8C8C',
     white: '#ffffff',
     black: '#707070',
+    backgroundBlack: '#464646',
   },
 };
