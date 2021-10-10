@@ -2,8 +2,9 @@
 import React from 'react';
 import {Text, Btn, ScrollView, View} from 'components/UI';
 import theme from 'theme/theme';
+import Steps from 'components/Steps';
 import {Container} from './styles';
-import Steps from './Steps';
+
 const InitialPageTemplate = ({
   onPress,
   Image,
