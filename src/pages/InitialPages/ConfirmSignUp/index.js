@@ -37,7 +37,7 @@ const UserInfos = ({navigation}) => {
     <InitialPageTemplate
       title="Confirmação do cadastro"
       subtitle="Informe-nos por favor suas informações para que possamos manter seus registros adequadamente"
-      buttonTitle="Enviar código"
+      buttonTitle="Confirmar"
       onPress={onPress}
       step={2}
       disabledButton={!formIsValid()}>
