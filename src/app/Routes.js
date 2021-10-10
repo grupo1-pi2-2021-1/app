@@ -1,5 +1,5 @@
 import React from 'react';
-import {SafeAreaView, StatusBar, Platform} from 'react-native';
+import {StatusBar} from 'react-native';
 
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
@@ -27,11 +27,6 @@ const Routes = () => {
   const Stack = createStackNavigator();
   const Tab = createBottomTabNavigator();
 
-  const safeAreaViewStyle = {
-    flexGrow: 1,
-    backgroundColor: theme.colors.white,
-  };
-
   const defaultStackOptions = {
     title: '',
     headerBackTitle: 'Voltar',
@@ -41,54 +36,82 @@ const Routes = () => {
   const tabOptions = {
     tabBarActiveTintColor: theme.colors.primary,
     tabBarInactiveTintColor: theme.colors.black,
+    headerStyle: {backgroundColor: theme.colors.primary},
+    headerTintColor: theme.colors.white,
+  };
+
+  const proceduresOptions = {
+    headerStyle: {backgroundColor: theme.colors.primary},
+    headerTintColor: theme.colors.white,
   };
 
   const procedures = () => (
-    <Stack.Navigator>
-      <Stack.Screen name="Procedures" component={Procedures} />
-      <Stack.Screen name="ProcedureDetails" component={ProcedureDetails} />
+    <Stack.Navigator screenOptions={proceduresOptions}>
+      <Stack.Screen
+        options={{title: 'Procedimentos'}}
+        name="Procedures"
+        component={Procedures}
+      />
+      <Stack.Screen
+        options={{title: 'Procedimento'}}
+        name="ProcedureDetails"
+        component={ProcedureDetails}
+      />
     </Stack.Navigator>
   );
 
   const signedIn = () => (
-    <Tab.Navigator screenOptions={tabOptions}>
-      <Tab.Screen
-        name="Home"
-        component={procedures}
-        options={{
-          tabBarIcon: ({color, size}) => (
-            <Icon name="list" color={color} size={size} />
-          ),
-        }}
+    <>
+      <StatusBar
+        barStyle="light-content"
+        backgroundColor={theme.colors.primary}
       />
-      <Tab.Screen
-        name="Historic"
-        component={Historic}
-        options={{
-          tabBarIcon: ({color, size}) => (
-            <Icon name="clock" color={color} size={size} />
-          ),
-        }}
-      />
-      <Tab.Screen
-        name="Settings"
-        component={Settings}
-        options={{
-          tabBarIcon: ({color, size}) => (
-            <Icon name="settings" color={color} size={size} />
-          ),
-        }}
-      />
-    </Tab.Navigator>
+      <Tab.Navigator screenOptions={tabOptions}>
+        <Tab.Screen
+          name="Home"
+          component={procedures}
+          options={{
+            tabBarIcon: ({color, size}) => (
+              <Icon name="list" color={color} size={size} />
+            ),
+            header: () => null,
+            title: 'Procedimentos',
+          }}
+        />
+        <Tab.Screen
+          name="Historic"
+          component={Historic}
+          options={{
+            tabBarIcon: ({color, size}) => (
+              <Icon name="clock" color={color} size={size} />
+            ),
+            title: 'Histórico',
+          }}
+        />
+        <Tab.Screen
+          name="Settings"
+          component={Settings}
+          options={{
+            tabBarIcon: ({color, size}) => (
+              <Icon name="settings" color={color} size={size} />
+            ),
+            title: 'Configurações',
+          }}
+        />
+      </Tab.Navigator>
+    </>
   );
 
   const signedOut = () => (
-    <Stack.Navigator screenOptions={defaultStackOptions}>
-      <Stack.Screen name="Welcome" component={Welcome} />
-      <Stack.Screen name="UserInfos" component={UserInfos} />
-      <Stack.Screen name="ConfirmSignUp" component={ConfirmSignUp} />
-      <Stack.Screen name="SelectAmbulance" component={SelectAmbulance} />
-    </Stack.Navigator>
+    <>
+      <StatusBar barStyle="dark-content" backgroundColor={theme.colors.white} />
+      <Stack.Navigator screenOptions={defaultStackOptions}>
+        <Stack.Screen name="Welcome" component={Welcome} />
+        <Stack.Screen name="UserInfos" component={UserInfos} />
+        <Stack.Screen name="ConfirmSignUp" component={ConfirmSignUp} />
+        <Stack.Screen name="SelectAmbulance" component={SelectAmbulance} />
+      </Stack.Navigator>
+    </>
   );
 
   const execution = () => {
@@ -112,18 +135,9 @@ const Routes = () => {
   return (
     <>
       <ThemeProvider theme={theme}>
-        <SafeAreaView
-          barStyle={Platform.OS === 'ios' ? 'dark-content' : 'light-content'}
-          style={safeAreaViewStyle}>
-          <StatusBar
-            barStyle="light-content"
-            backgroundColor={theme.colors.white}
-          />
-          <NavigationContainer
-            theme={{colors: {background: theme.colors.white}}}>
-            {navigationScreens()}
-          </NavigationContainer>
-        </SafeAreaView>
+        <NavigationContainer theme={{colors: {background: theme.colors.white}}}>
+          {navigationScreens()}
+        </NavigationContainer>
       </ThemeProvider>
     </>
   );
