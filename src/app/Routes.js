@@ -38,55 +38,56 @@ const Routes = () => {
     headerTintColor: theme.colors.primary,
   };
 
+  const tabOptions = {
+    tabBarActiveTintColor: theme.colors.primary,
+    tabBarInactiveTintColor: theme.colors.black,
+  };
+
   const procedures = () => (
     <Stack.Navigator>
-      <Stack.Screen
-        name="Procedures"
-        component={Procedures}
-        // options={{header: () => <Header />}}
-      />
-      <Stack.Screen
-        name="ProcedureDetails"
-        component={ProcedureDetails}
-        // options={{header: () => <Header />}}
-      />
+      <Stack.Screen name="Procedures" component={Procedures} />
+      <Stack.Screen name="ProcedureDetails" component={ProcedureDetails} />
     </Stack.Navigator>
   );
 
   const signedIn = () => (
-    <Tab.Navigator>
-      <Tab.Screen name="Home" component={procedures} />
-      <Tab.Screen name="Historic" component={Historic} />
-      <Tab.Screen name="Settings" component={Settings} />
+    <Tab.Navigator screenOptions={tabOptions}>
+      <Tab.Screen
+        name="Home"
+        component={procedures}
+        options={{
+          tabBarIcon: ({color, size}) => (
+            <Icon name="list" color={color} size={size} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Historic"
+        component={Historic}
+        options={{
+          tabBarIcon: ({color, size}) => (
+            <Icon name="clock" color={color} size={size} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Settings"
+        component={Settings}
+        options={{
+          tabBarIcon: ({color, size}) => (
+            <Icon name="settings" color={color} size={size} />
+          ),
+        }}
+      />
     </Tab.Navigator>
   );
 
   const signedOut = () => (
-    <Stack.Navigator
-      defaultScreenOptions={{
-        headerBackTitle: 'Voltar',
-        headerBackImage: <Icon name="arrow-left" size={30} />,
-      }}>
-      <Stack.Screen
-        name="Welcome"
-        options={defaultStackOptions}
-        component={Welcome}
-      />
-      <Stack.Screen
-        name="UserInfos"
-        options={defaultStackOptions}
-        component={UserInfos}
-      />
-      <Stack.Screen
-        name="ConfirmSignUp"
-        options={defaultStackOptions}
-        component={ConfirmSignUp}
-      />
-      <Stack.Screen
-        name="SelectAmbulance"
-        options={defaultStackOptions}
-        component={SelectAmbulance}
-      />
+    <Stack.Navigator screenOptions={defaultStackOptions}>
+      <Stack.Screen name="Welcome" component={Welcome} />
+      <Stack.Screen name="UserInfos" component={UserInfos} />
+      <Stack.Screen name="ConfirmSignUp" component={ConfirmSignUp} />
+      <Stack.Screen name="SelectAmbulance" component={SelectAmbulance} />
     </Stack.Navigator>
   );
 
