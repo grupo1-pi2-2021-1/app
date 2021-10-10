@@ -7,11 +7,10 @@ import {ThemeProvider} from 'styled-components/native';
 import {useSelector} from 'react-redux';
 import {auth} from 'store/selectors';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import Icon from 'react-native-vector-icons/Feather';
 
 import theme from 'theme/theme';
 
-import Page1 from 'pages/Page1';
-import Page2 from 'pages/Page2';
 import Historic from 'pages/Historic';
 import Settings from 'pages/Settings';
 import Procedures from 'pages/Procedures';
@@ -36,6 +35,7 @@ const Routes = () => {
   const defaultStackOptions = {
     title: '',
     headerBackTitle: 'Voltar',
+    headerTintColor: theme.colors.primary,
   };
 
   const procedures = () => (
@@ -62,7 +62,11 @@ const Routes = () => {
   );
 
   const signedOut = () => (
-    <Stack.Navigator defaultScreenOptions={{headerBackTitle: 'Voltar'}}>
+    <Stack.Navigator
+      defaultScreenOptions={{
+        headerBackTitle: 'Voltar',
+        headerBackImage: <Icon name="arrow-left" size={30} />,
+      }}>
       <Stack.Screen
         name="Welcome"
         options={defaultStackOptions}
