@@ -2,3 +2,8 @@ export const LOGIN = 'LOGIN';
 export const LOGOUT = 'LOGOUT';
 export const ENABLE_LOADER = 'ENABLE_LOADER';
 export const DISABLE_LOADER = 'DISABLE_LOADER';
+export const SELECT_AMBULANCE = 'SELECT_AMBULANCE';
+export const CLEAR_AMBULANCE = 'CLEAR_AMBULANCE';
+export const INIT_PROCEDURE = 'INIT_PROCEDURE';
+export const END_PROCEDURE = 'END_PROCEDURE';
+
