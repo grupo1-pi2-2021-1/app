@@ -6,20 +6,102 @@ import {createStackNavigator} from '@react-navigation/stack';
 import {ThemeProvider} from 'styled-components/native';
 import {useSelector} from 'react-redux';
 import {auth} from 'store/selectors';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
 import theme from 'theme/theme';
 
 import Page1 from 'pages/Page1';
 import Page2 from 'pages/Page2';
+import Historic from 'pages/Historic';
+import Settings from 'pages/Settings';
+import Procedures from 'pages/Procedures';
+import ProcedureDetails from 'pages/ProcedureDetails';
+import ProcedureExecution from 'pages/ProcedureExecution';
+import Welcome from 'pages/InitialPages/Welcome';
+import UserInfos from 'pages/InitialPages/UserInfos';
+import ConfirmSignUp from 'pages/InitialPages/ConfirmSignUp';
+import SelectAmbulance from 'pages/InitialPages/SelectAmbulance';
 
 const Routes = () => {
   const user = useSelector(auth);
 
   const Stack = createStackNavigator();
+  const Tab = createBottomTabNavigator();
 
   const safeAreaViewStyle = {
     flexGrow: 1,
     backgroundColor: theme.colors.white,
+  };
+
+  const defaultStackOptions = {
+    title: '',
+    headerBackTitle: 'Voltar',
+  };
+
+  const procedures = () => (
+    <Stack.Navigator>
+      <Stack.Screen
+        name="Procedures"
+        component={Procedures}
+        // options={{header: () => <Header />}}
+      />
+      <Stack.Screen
+        name="ProcedureDetails"
+        component={ProcedureDetails}
+        // options={{header: () => <Header />}}
+      />
+    </Stack.Navigator>
+  );
+
+  const signedIn = () => (
+    <Tab.Navigator>
+      <Tab.Screen name="Home" component={procedures} />
+      <Tab.Screen name="Historic" component={Historic} />
+      <Tab.Screen name="Settings" component={Settings} />
+    </Tab.Navigator>
+  );
+
+  const signedOut = () => (
+    <Stack.Navigator defaultScreenOptions={{headerBackTitle: 'Voltar'}}>
+      <Stack.Screen
+        name="Welcome"
+        options={defaultStackOptions}
+        component={Welcome}
+      />
+      <Stack.Screen
+        name="UserInfos"
+        options={defaultStackOptions}
+        component={UserInfos}
+      />
+      <Stack.Screen
+        name="ConfirmSignUp"
+        options={defaultStackOptions}
+        component={ConfirmSignUp}
+      />
+      <Stack.Screen
+        name="SelectAmbulance"
+        options={defaultStackOptions}
+        component={SelectAmbulance}
+      />
+    </Stack.Navigator>
+  );
+
+  const execution = () => {
+    <Stack.Navigator>
+      <Stack.Screen name="ProcedureExecution" component={ProcedureExecution} />
+    </Stack.Navigator>;
+  };
+
+  const navigationScreens = () => {
+    if (!user || !user.id) {
+      return signedOut();
+    }
+
+    if (user.executingProcedure) {
+      return execution();
+    }
+
+    return signedIn();
   };
 
   return (
@@ -34,15 +116,7 @@ const Routes = () => {
           />
           <NavigationContainer
             theme={{colors: {background: theme.colors.white}}}>
-            <Stack.Navigator
-              initialRouteName={user && user.id ? 'Page2' : 'Page1'}>
-              <Stack.Screen
-                name="Page1"
-                component={Page1}
-                // options={{header: () => <Header />}}
-              />
-              <Stack.Screen name="Page2" component={Page2} />
-            </Stack.Navigator>
+            {navigationScreens()}
           </NavigationContainer>
         </SafeAreaView>
       </ThemeProvider>
