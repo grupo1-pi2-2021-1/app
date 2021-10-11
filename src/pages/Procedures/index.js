@@ -2,7 +2,7 @@ import React from 'react';
 import ListPage from 'components/ListPage';
 import Item from 'components/pageComponents/ProcedureItem';
 
-const Procedures = () => {
+const Procedures = ({navigation}) => {
   const data = [
     {
       name: 'Esterelização completa',
@@ -10,7 +10,28 @@ const Procedures = () => {
         'Procedimento completo de limpeza de ambulâncias com tempo mais demorado',
       type: 'Ozônio + UV',
       time: '25:00',
-      steps: [],
+      steps: [
+        {
+          name: 'Posicionar o aparelho',
+          description: 'Coloque o aparelho higienizador dentro da ambulância',
+        },
+        {
+          name: 'Fechar todas as janelas',
+          description: 'Verifique se todas as frestas da ambulância estão seladas',
+        },
+        {
+          name: 'Ligar aparelho',
+          description: 'Ligue o aparelho higienizador no interruptor lateral',
+        },
+        {
+          name: 'Rotina automática',
+          description: 'Será disparada uma rotina automática de luz UV + ozônio',
+        },
+        {
+          name: 'Finalizar',
+          description: 'Desligue o aparelho higienizador no interruptor lateral',
+        },
+      ],
       id: '1',
     },
     {
@@ -39,7 +60,11 @@ const Procedures = () => {
       id: '4',
     },
   ];
-  return <ListPage Item={Item} data={data} />;
+
+  const onPress = item => {
+    navigation.navigate('ProcedureDetails', {item});
+  };
+  return <ListPage Item={Item} data={data} onPressItem={onPress} />;
 };
 
 export default Procedures;

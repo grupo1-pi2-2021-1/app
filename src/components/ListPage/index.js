@@ -6,7 +6,9 @@ import {FlatList} from 'react-native';
 import {Container} from './styles';
 
 const SelectAmbulanceTemplate = ({onPressItem, Item, data, ...props}) => {
-  const renderItem = ({item}) => <Item item={item} onPress={onPressItem} />;
+  const renderItem = ({item, index}) => (
+    <Item item={item} index={index} onPress={onPressItem} />
+  );
 
   return (
     <Container>

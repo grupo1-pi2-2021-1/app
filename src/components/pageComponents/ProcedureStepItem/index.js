@@ -2,51 +2,22 @@
 import React from 'react';
 import {Text, View, Touchable} from 'components/UI';
 import theme from 'theme/theme';
+import ItemCircle from 'components/ItemCircle';
 
-const Item = ({item, onPress}) => {
+const Item = ({item, index}) => {
   return (
-    <>
-      <Touchable onPress={onPress}>
-        <View p={2}>
-          <Text fontWeight="bold" fontSize={theme.font.sizes.M} mb={2}>
-            {item.date}
-          </Text>
-          <View row alignItems="center" justifyContent="center">
-            <Text
-              fontSize={theme.font.sizes.SM}
-              color={theme.colors.darkGrey}
-              flex={0.4}>
-              RESPONSÁVEL
-            </Text>
-            <Text
-              fontSize={theme.font.sizes.SM}
-              color={theme.colors.darkGrey}
-              flex={0.4}>
-              PROCEDIMENTO
-            </Text>
-            <Text
-              fontSize={theme.font.sizes.SM}
-              color={theme.colors.darkGrey}
-              flex={0.2}>
-              HORA
-            </Text>
-          </View>
-          <View alignSelf="stretch" height={1} bg={theme.colors.grey} my={1} />
-          <View row alignItems="center" justifyContent="center">
-            <Text fontSize={theme.font.sizes.SM} fontWeight="bold" flex={0.4}>
-              {item.userName}
-            </Text>
-            <Text fontSize={theme.font.sizes.SM} fontWeight="bold" flex={0.4}>
-              {item.procedureName}
-            </Text>
-            <Text fontSize={theme.font.sizes.SM} fontWeight="bold" flex={0.2}>
-              {item.time}
-            </Text>
-          </View>
-          <View alignSelf="stretch" height={1} bg={theme.colors.grey} my={1} />
-        </View>
-      </Touchable>
-    </>
+    <View row alignItems="center" my={2}>
+      <ItemCircle step={index + 1} />
+      <View flex={1} ml={2}>
+        <Text
+          fontSize={theme.font.sizes.SM}
+          color={theme.colors.darkGrey}
+          fontWeight="bold">
+          {item.name}
+        </Text>
+        <Text fontSize={theme.font.sizes.SM}>{item.description}</Text>
+      </View>
+    </View>
   );
 };
 

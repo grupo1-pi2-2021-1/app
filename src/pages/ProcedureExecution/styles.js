@@ -4,11 +4,10 @@ export const Container = styled.View`
   padding: 20px;
 `;
 
-export const FirstInput = styled.View`
-  flex-direction: row;
-  align-items: center;
-`;
-
-export const InputView = styled.View`
-  flex: 1;
+export const ButtonView = styled.View`
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 20px 70px;
 `;

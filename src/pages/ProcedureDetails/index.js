@@ -1,12 +1,38 @@
 import React from 'react';
-import {View, Text} from 'components/UI';
+import ListPage from 'components/ListPage';
+import Item from 'components/pageComponents/ProcedureStepItem';
+import {Text, Btn} from 'components/UI';
+import theme from 'theme/theme';
+import Icon from 'react-native-vector-icons/FontAwesome';
+import {ButtonView} from './styles';
 
-const Page2 = () => {
+const ProcedureDetails = ({navigation, route}) => {
+  const procedure = route.params.item;
+  const onPress = item => {
+    navigation.navigate('ProcedureDetails', {item});
+  };
+
+  const header = (
+    <Text fontWeight="bold" mb={4} fontSize={theme.font.sizes.ML}>
+      {`${procedure.steps.length} Etapas`}
+    </Text>
+  );
+
   return (
-    <View flex={1} alignItems="center" justifyContent="center">
-      <Text>Page 2</Text>
-    </View>
+    <>
+      <ListPage
+        Item={Item}
+        data={procedure.steps}
+        ListHeaderComponent={header}
+      />
+      <ButtonView>
+        <Btn
+          onPress={onPress}
+          title={<Icon name="play" color={theme.colors.white} size={25} />}
+        />
+      </ButtonView>
+    </>
   );
 };
 
-export default Page2;
+export default ProcedureDetails;

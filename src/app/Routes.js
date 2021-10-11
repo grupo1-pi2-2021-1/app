@@ -43,6 +43,7 @@ const Routes = () => {
   const proceduresOptions = {
     headerStyle: {backgroundColor: theme.colors.primary},
     headerTintColor: theme.colors.white,
+    headerBackTitle: 'Voltar',
   };
 
   const procedures = () => (

@@ -6,7 +6,7 @@ import theme from 'theme/theme';
 const Item = ({item, onPress}) => {
   return (
     <>
-      <Touchable onPress={onPress}>
+      <Touchable onPress={() => onPress(item)}>
         <View my={2} p={4} bg={theme.colors.backgroundBlack} borderRadius={12}>
           <Text
             color={theme.colors.primary}
