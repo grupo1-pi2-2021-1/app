@@ -81,6 +81,7 @@ export default class BluetoothManager {
         // m => finish command
         const response = this.sendCommand('m');
         if (response.value === 'ok') {
+          this.success = true;
           resolve(true);
         } else {
           reject();
@@ -92,8 +93,11 @@ export default class BluetoothManager {
   endProcedure() {
     this.intervalSubscription = setInterval(async () => {
       try {
-        const response = await this.tryEndProcedure();
-        if (response) clearInterval(this.intervalSubscription);
+        await this.tryEndProcedure();
+        if (this.success) {
+          this.success = false;
+          clearInterval(this.intervalSubscription);
+        }
       } catch (error) {
         // Do nothing
       }

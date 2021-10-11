@@ -9,7 +9,7 @@ import {ButtonView} from './styles';
 const ProcedureDetails = ({navigation, route}) => {
   const procedure = route.params.item;
   const onPress = item => {
-    navigation.navigate('ProcedureDetails', {item});
+    navigation.push('ProcedureExecution', {item});
   };
 
   const header = (
