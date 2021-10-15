@@ -6,7 +6,7 @@ export default reducers => {
     {
       storage: AsyncStorage,
       key: 'app',
-      whitelist: ['loader'],
+      blacklist: ['loader'],
     },
     reducers,
   );

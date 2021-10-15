@@ -4,7 +4,8 @@ import theme from 'theme/theme';
 export const Container = styled.View`
   height: 40px;
   width: 40px;
-  background-color: ${theme.colors.darkGrey};
+  background-color: ${({selected}) =>
+    selected ? theme.colors.primary : theme.colors.darkGrey};
   border-radius: 70px;
   align-items: center;
   justify-content: center;

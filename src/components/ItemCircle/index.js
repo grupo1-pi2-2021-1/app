@@ -4,9 +4,9 @@ import {Text} from 'components/UI';
 import theme from 'theme/theme';
 import {Container} from './styles';
 
-const ItemCircle = ({step}) => {
+const ItemCircle = ({step, selected}) => {
   return (
-    <Container>
+    <Container selected={selected}>
       <Text
         textAlign="center"
         fontWeight="bold"

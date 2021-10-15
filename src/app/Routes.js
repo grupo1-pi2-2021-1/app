@@ -5,7 +5,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {ThemeProvider} from 'styled-components/native';
 import {useSelector} from 'react-redux';
-import {auth} from 'store/selectors';
+import {auth, procedure} from 'store/selectors';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Icon from 'react-native-vector-icons/Feather';
 
@@ -23,6 +23,7 @@ import SelectAmbulance from 'pages/InitialPages/SelectAmbulance';
 
 const Routes = () => {
   const user = useSelector(auth);
+  const currentProcedure = useSelector(procedure);
 
   const Stack = createStackNavigator();
   const Tab = createBottomTabNavigator();
@@ -115,18 +116,18 @@ const Routes = () => {
     </>
   );
 
-  const execution = () => {
-    <Stack.Navigator>
+  const execution = () => (
+    <Stack.Navigator screenOptions={proceduresOptions}>
       <Stack.Screen name="ProcedureExecution" component={ProcedureExecution} />
-    </Stack.Navigator>;
-  };
+    </Stack.Navigator>
+  );
 
   const navigationScreens = () => {
     if (!user || !user.id) {
       return signedOut();
     }
 
-    if (user.executingProcedure) {
+    if (currentProcedure.id && currentProcedure.steps.length) {
       return execution();
     }
 

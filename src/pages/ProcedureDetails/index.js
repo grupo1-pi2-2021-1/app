@@ -1,4 +1,6 @@
 import React from 'react';
+import {useDispatch} from 'react-redux';
+import * as Actions from 'store/actions';
 import ListPage from 'components/ListPage';
 import Item from 'components/pageComponents/ProcedureStepItem';
 import {Text, Btn} from 'components/UI';
@@ -6,10 +8,12 @@ import theme from 'theme/theme';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {ButtonView} from './styles';
 
-const ProcedureDetails = ({navigation, route}) => {
+const ProcedureDetails = ({route}) => {
+  const dispatch = useDispatch();
   const procedure = route.params.item;
-  const onPress = item => {
-    navigation.navigate('ProcedureDetails', {item});
+  
+  const onPress = () => {
+    dispatch(Actions.initProcedure(procedure));
   };
 
   const header = (

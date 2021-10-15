@@ -17,7 +17,8 @@ const Procedures = ({navigation}) => {
         },
         {
           name: 'Fechar todas as janelas',
-          description: 'Verifique se todas as frestas da ambulância estão seladas',
+          description:
+            'Verifique se todas as frestas da ambulância estão seladas',
         },
         {
           name: 'Ligar aparelho',
@@ -25,11 +26,14 @@ const Procedures = ({navigation}) => {
         },
         {
           name: 'Rotina automática',
-          description: 'Será disparada uma rotina automática de luz UV + ozônio',
+          description:
+            'Será disparada uma rotina automática de luz UV + ozônio',
+          time: '10:00',
         },
         {
           name: 'Finalizar',
-          description: 'Desligue o aparelho higienizador no interruptor lateral',
+          description:
+            'Desligue o aparelho higienizador no interruptor lateral',
         },
       ],
       id: '1',
