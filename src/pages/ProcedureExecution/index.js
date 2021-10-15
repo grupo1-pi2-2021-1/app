@@ -27,6 +27,8 @@ const ProcedureDetails = ({navigation, route}) => {
   const secondsRef = useRef(0);
   const interval = useRef(null);
 
+  const title = currentStep.time ? 'Tempo restante' : 'Aguardando aprovação';
+
   const initTime = () => {
     interval.current = setInterval(() => {
       if (minutesRef.current === 0 && secondsRef.current === 0) {
@@ -137,14 +139,25 @@ const ProcedureDetails = ({navigation, route}) => {
             fontWeight="bold"
             textAlign="center"
             fontSize={theme.font.sizes.L}
-            mt={3}>
-            {currentStep.time ? 'Tempo restante' : 'Aguardando aprovação'}
+            mt={3}
+            accessible
+            accessibleLabel={title}>
+            {title}
           </Text>
           <Ronded />
-          <Text fontWeight="bold" textAlign="center">
+          <Text
+            fontWeight="bold"
+            textAlign="center"
+            accessible
+            accessibleLabel={currentStep.name}>
             {currentStep.name}
           </Text>
-          <Text textAlign="center">{currentStep.description}</Text>
+          <Text
+            textAlign="center"
+            accessible
+            accessibleLabel={currentStep.description}>
+            {currentStep.description}
+          </Text>
           {nextStep ? (
             <Text mt={3} textAlign="center">
               {`Próximo passo: ${currentStep.name}`}
