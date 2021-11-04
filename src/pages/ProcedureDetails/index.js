@@ -26,7 +26,7 @@ const ProcedureDetails = ({route}) => {
     <>
       <ListPage
         Item={Item}
-        data={procedure.steps}
+        listData={procedure.steps}
         ListHeaderComponent={header}
       />
       <ButtonView>

@@ -23,7 +23,7 @@ const Item = ({item}) => {
       <Touchable onPress={selectAmbulance}>
         <View p={2}>
           <Text fontWeight="bold" fontSize={theme.font.sizes.ML} my={1}>
-            {item.name}
+            {item.title}
           </Text>
           <View row alignItems="center" justifyContent="center">
             <Text

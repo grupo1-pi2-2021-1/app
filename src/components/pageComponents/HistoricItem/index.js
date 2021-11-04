@@ -2,6 +2,9 @@
 import React from 'react';
 import {Text, View, Touchable} from 'components/UI';
 import theme from 'theme/theme';
+import moment from 'moment';
+
+moment.locale('pt-BR');
 
 const Item = ({item, onPress}) => {
   return (
@@ -9,7 +12,7 @@ const Item = ({item, onPress}) => {
       <Touchable onPress={onPress}>
         <View p={2}>
           <Text fontWeight="bold" fontSize={theme.font.sizes.M} mb={2}>
-            {item.date}
+            {moment(item.hour).format('dddd Do MMMM, YYYY')}
           </Text>
           <View row alignItems="center" justifyContent="center">
             <Text

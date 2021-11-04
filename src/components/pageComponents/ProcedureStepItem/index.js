@@ -13,7 +13,7 @@ const Item = ({item, index}) => {
           fontSize={theme.font.sizes.SM}
           color={theme.colors.darkGrey}
           fontWeight="bold">
-          {item.name}
+          {item.title}
         </Text>
         <Text fontSize={theme.font.sizes.SM}>{item.description}</Text>
       </View>

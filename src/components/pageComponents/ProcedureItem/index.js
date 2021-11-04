@@ -19,7 +19,7 @@ const Item = ({item, onPress}) => {
             fontSize={theme.font.sizes.ML}
             fontWeight="bold"
             mb={2}>
-            {item.name}
+            {item.title}
           </Text>
           <Text color={theme.colors.white} fontSize={theme.font.sizes.M} mb={4}>
             {item.description}

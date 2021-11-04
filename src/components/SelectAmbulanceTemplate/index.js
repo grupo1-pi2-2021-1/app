@@ -1,41 +1,39 @@
 /* eslint-disable react/prop-types */
-import React from 'react';
-import {Text, Btn, ScrollView, View} from 'components/UI';
+import React, {useEffect, useState} from 'react';
+import {Text, Btn, View} from 'components/UI';
 import theme from 'theme/theme';
 import Steps from 'components/Steps';
 
-import {useSelector} from 'react-redux';
+import {useSelector, useDispatch} from 'react-redux';
 import {ambulance} from 'store/selectors';
+import LoadingModal from 'components/LoadingModal';
+import api from 'services/api';
+import * as Actions from 'store/actions';
 
-import {FlatList} from 'react-native';
+import {Alert, FlatList} from 'react-native';
 import {Container} from './styles';
 import Item from './Item';
 
-const DATA = [
-  {
-    name: 'Ambulância tipo A',
-    description: 'Grupo 1 de ambulâncias de 4x3m',
-    id: '1',
-  },
-  {
-    name: 'Ambulância tipo B',
-    description: 'Grupo 2 de ambulâncias de 4x4m',
-    id: '2',
-  },
-  {
-    name: 'Ambulância tipo C',
-    description: 'Grupo 3 de ambulâncias de 5x4m',
-    id: '3',
-  },
-  {
-    name: 'Ambulância tipo D',
-    description: 'Grupo 4 de ambulâncias de 5x5m',
-    id: '4',
-  },
-];
-
 const SelectAmbulanceTemplate = ({onInitialPages, onPress}) => {
+  const dispatch = useDispatch();
   const selectedAmbulance = useSelector(ambulance);
+  const [ambulances, setAmbulances] = useState([]);
+  const fetchAmbulances = async () => {
+    dispatch(Actions.enableLoader());
+    try {
+      const response = await api.get('/ambulances');
+      if (response.data && response.data.length) {
+        setAmbulances(response.data);
+      }
+    } catch (error) {
+      Alert.alert('Erro', error.message);
+    }
+    dispatch(Actions.disableLoader());
+  };
+
+  useEffect(() => {
+    fetchAmbulances();
+  }, []);
 
   const renderItem = ({item}) => <Item item={item} />;
 
@@ -45,6 +43,7 @@ const SelectAmbulanceTemplate = ({onInitialPages, onPress}) => {
 
   return (
     <Container>
+      <LoadingModal />
       <View flex={onInitialPages ? 0.85 : 1}>
         <FlatList
           ListHeaderComponent={() => (
@@ -57,7 +56,7 @@ const SelectAmbulanceTemplate = ({onInitialPages, onPress}) => {
               {title}
             </Text>
           )}
-          data={DATA}
+          data={ambulances}
           renderItem={renderItem}
           keyExtractor={item => item.id}
         />

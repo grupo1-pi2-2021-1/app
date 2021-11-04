@@ -123,7 +123,7 @@ const Routes = () => {
   );
 
   const navigationScreens = () => {
-    if (!user || !user.id) {
+    if (!user || !user.ready) {
       return signedOut();
     }
 

@@ -6,13 +6,13 @@ import phoneMask from 'masks/phoneMask';
 import {View} from 'components/UI';
 
 import InitialPageTemplate from 'components/InitialPageTemplate';
-// import {Alert} from 'react-native';
-// import api from 'services/api';
-// import {useDispatch} from 'react-redux';
-// import * as Actions from 'store/actions';
+import {Alert} from 'react-native';
+import api from 'services/api';
+import {useDispatch} from 'react-redux';
+import * as Actions from 'store/actions';
 
 const UserInfos = ({navigation}) => {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   const [phone, setPhone] = useState({
     isValid: false,
@@ -29,15 +29,32 @@ const UserInfos = ({navigation}) => {
   };
 
   const onPress = async () => {
-    navigation.navigate('ConfirmSignUp');
-    // dispatch(Actions.enableLoader());
-    // const params = {}
-    // try {
-    //   await api.post('/route/', params);
-    // } catch (error) {
-    //   Alert.alert('Higienizador de Ambulancias', 'Ocorreu um erro ao se conectar com o servidor');
-    //   dispatch(Actions.disableLoader());
-    // }
+    dispatch(Actions.enableLoader());
+    const params = {
+      name: name.value,
+      phone: phone.value,
+    };
+
+    try {
+      const response = await api.post('/user', params);
+      const {data} = response;
+      if (data.id && data.id.length) {
+        dispatch(
+          Actions.login({
+            ...params,
+            id: data.id[0],
+          }),
+        );
+        navigation.navigate('ConfirmSignUp');
+      }
+      dispatch(Actions.disableLoader());
+    } catch (error) {
+      Alert.alert(
+        'Higienizador de Ambulancias',
+        'Ocorreu um erro ao se conectar com o servidor',
+      );
+      dispatch(Actions.disableLoader());
+    }
   };
 
   return (
