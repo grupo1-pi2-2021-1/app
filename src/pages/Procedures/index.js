@@ -6,7 +6,7 @@ const Procedures = ({navigation}) => {
   const onPress = item => {
     navigation.navigate('ProcedureDetails', {item});
   };
-  return <ListPage Item={Item} path="/procedures" onPressItem={onPress} />;
+  return <ListPage Item={Item} path="/proceduresSteps" onPressItem={onPress} />;
 };
 
 export default Procedures;

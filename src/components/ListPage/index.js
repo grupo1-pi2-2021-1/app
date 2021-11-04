@@ -3,6 +3,7 @@
 import React, {useEffect, useState} from 'react';
 import {View} from 'components/UI';
 import {FlatList, Alert} from 'react-native';
+import {useFocusEffect} from '@react-navigation/native';
 import {useDispatch} from 'react-redux';
 import * as Actions from 'store/actions';
 import api from 'services/api';
@@ -31,11 +32,13 @@ const SelectAmbulanceTemplate = ({
     dispatch(Actions.disableLoader());
   };
 
-  useEffect(() => {
-    if (path) {
-      fetchData();
-    }
-  }, []);
+  useFocusEffect(
+    React.useCallback(() => {
+      if (path) {
+        fetchData();
+      }
+    }, []),
+  );
 
   const renderItem = ({item, index}) => (
     <Item item={item} index={index} onPress={onPressItem} />
