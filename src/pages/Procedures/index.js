@@ -28,7 +28,7 @@ const Procedures = ({navigation}) => {
           name: 'Rotina automática',
           description:
             'Será disparada uma rotina automática de luz UV + ozônio',
-          time: '10:00',
+          time: '25:00',
         },
         {
           name: 'Finalizar',
@@ -39,19 +39,10 @@ const Procedures = ({navigation}) => {
       id: '1',
     },
     {
-      name: 'Esterelização rápida',
-      description:
-        'Procedimento rápido de limpeza de ambulâncias com tempo reduzido',
-      type: 'Ozônio + UV',
-      time: '25:00',
-      steps: [],
-      id: '2',
-    },
-    {
       name: 'Esterelização com ozônio',
       description: 'Procedimento rápido apenas utilizando gás ozônio',
       type: 'Somente ozônio',
-      time: '25:00',
+      time: '15:00',
       steps: [],
       id: '3',
     },
@@ -59,7 +50,7 @@ const Procedures = ({navigation}) => {
       name: 'Esterelização com Luz UV',
       description: 'Procedimento rápido apenas utilizando luz UV',
       type: 'Somente UV',
-      time: '25:00',
+      time: '10:00',
       steps: [],
       id: '4',
     },
