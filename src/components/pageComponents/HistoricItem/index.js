@@ -12,7 +12,7 @@ const Item = ({item, onPress}) => {
       <Touchable onPress={onPress}>
         <View p={2}>
           <Text fontWeight="bold" fontSize={theme.font.sizes.M} mb={2}>
-            {moment(item.hour).format('dddd Do MMMM, YYYY')}
+            {item.hour.substring(0, 9)}
           </Text>
           <View row alignItems="center" justifyContent="center">
             <Text
@@ -37,13 +37,13 @@ const Item = ({item, onPress}) => {
           <View alignSelf="stretch" height={1} bg={theme.colors.grey} my={1} />
           <View row alignItems="center" justifyContent="center">
             <Text fontSize={theme.font.sizes.SM} fontWeight="bold" flex={0.4}>
-              {item.userName}
+              {item.name}
             </Text>
             <Text fontSize={theme.font.sizes.SM} fontWeight="bold" flex={0.4}>
-              {item.procedureName}
+              {item.title}
             </Text>
             <Text fontSize={theme.font.sizes.SM} fontWeight="bold" flex={0.2}>
-              {item.time}
+              {item.hour.substring(11)}
             </Text>
           </View>
           <View alignSelf="stretch" height={1} bg={theme.colors.grey} my={1} />
