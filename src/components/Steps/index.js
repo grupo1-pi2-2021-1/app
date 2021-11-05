@@ -7,7 +7,7 @@ const InitialPageTemplate = ({step}) => {
   return (
     <Container>
       {steps.map(item => (
-        <Step currentStep={item === step} />
+        <Step key={item} currentStep={item === step} />
       ))}
     </Container>
   );

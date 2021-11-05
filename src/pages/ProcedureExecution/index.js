@@ -149,8 +149,8 @@ const ProcedureDetails = ({navigation, route}) => {
             fontWeight="bold"
             textAlign="center"
             accessible
-            accessibleLabel={currentStep.title}>
-            {currentStep.title}
+            accessibleLabel={currentStep.name}>
+            {currentStep.name}
           </Text>
           <Text
             textAlign="center"
@@ -160,7 +160,7 @@ const ProcedureDetails = ({navigation, route}) => {
           </Text>
           {nextStep ? (
             <Text mt={3} textAlign="center">
-              {`Próximo passo: ${currentStep.title}`}
+              {`Próximo passo: ${currentStep.name}`}
             </Text>
           ) : null}
         </View>
