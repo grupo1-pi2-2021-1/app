@@ -27,22 +27,31 @@ Para a execução local da Wiki do projeto serão necessárias as seguintes depe
 
 ### Rodando a Aplicação
 
-Após feita a instalção do android-studio ou do xcode execute os seguintes comandos
+Siga o passo a passo de instalação para o seu sistema operacional descrito na [Página oficial do React Native](https://reactnative.dev/docs/environment-setup)
+Após feita a instalção do android-studio e/ou do xcode execute os seguintes comandos
 
 ```bash
-$ npm install
-$ npm start
+$ yarn
+$ yarn start
 ```
+Comandos apenas para iOS
+
+```bash
+$ cd ios
+$ pod install
+$ cd ..
+```
+
 Depois disso abrimos uma nova aba no terminal e rodamos:
 
 ```bash
-$ npm run adroid  
+$ yarn android  
 ```
 
-ou
+E/ou (no caso de iOS)
 
 ```bash
-$ npm run adroid  
+$ yarn ios
 ```
 
 ## [**Guia de Contribuição**](#Sumário)
