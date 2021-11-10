@@ -5,6 +5,7 @@
   "scripts": {
     "android": "react-native run-android",
     "ios": "react-native run-ios",
+    "android-release": "npx jetify && cd android && ./gradlew assembleRelease --daemon",
     "start": "react-native start",
     "test": "jest",
     "lint": "eslint .",
