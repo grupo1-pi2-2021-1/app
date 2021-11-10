@@ -12,7 +12,7 @@ const Item = ({item, onPress}) => {
       <Touchable onPress={onPress}>
         <View p={2}>
           <Text fontWeight="bold" fontSize={theme.font.sizes.M} mb={2}>
-            {item.hour.substring(0, 9)}
+            {item.hour.substring(0, 10)}
           </Text>
           <View row alignItems="center" justifyContent="center">
             <Text
